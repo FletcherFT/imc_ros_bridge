@@ -62,7 +62,8 @@ void UDPLink::publish(IMC::Message& msg, const string& addr)
     msg.setSource(imc_src);
     msg.setSourceEntity(imc_id);
     msg.setDestination(0);
-    msg.setTimeStamp(ros::Time::now().toSec());
+    //msg.setTimeStamp(ros::Time::now().toSec());
+    msg.setTimeStamp(ros::WallTime::now().toSec());
 
     char out_buffer_[4096];
     uint16_t rv = IMC::Packet::serialize(&msg, (uint8_t*)out_buffer_, sizeof(out_buffer_));
